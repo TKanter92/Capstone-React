@@ -7,9 +7,7 @@ function Header () {
         <React.Fragment>
             <div className="logo">
                 <img src={logo} alt="logo" float="left" />
-            </div>
-            <div>
-                <h1>Blue Paisley Designs</h1>
+                <h1 align="center">Blue Paisley Designs</h1>
             </div>
         </React.Fragment>
     )
