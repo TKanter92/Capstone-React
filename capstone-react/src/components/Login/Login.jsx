@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Register from '../Register/Register';
 import './Login.css';
 
@@ -30,7 +29,7 @@ class Login extends Component {
     }
 
     navToRegister = (event) => {
-        if(this.state.register == false)
+        if(this.state.register === false)
         {this.state.register = true}
         else{this.state.register = false}
         this.setState(
@@ -49,13 +48,13 @@ class Login extends Component {
                     <div className="row mb-3">
                         <label>Username:</label>
                         <div className="col-sm-10">
-                            <input type="text" name="username" placeHolder="Username..." onChange={this.handleChange} value={this.state.username} /><br />
+                            <input type="text" name="username" placeholder="Username..." onChange={this.handleChange} value={this.state.username} /><br />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label>Password:</label>
                         <div className="col-sm-10">
-                            <input type="password" name="password" placeHolder="Password..." onChange={this.handleChange} value={this.state.password} /><br />
+                            <input type="password" name="password" placeholder="Password..." onChange={this.handleChange} value={this.state.password} /><br />
                         </div>
                     </div>
                     <div className="row">

@@ -8,8 +8,8 @@ class Register extends Component {
             username: "",
             password: "",
             email: "",
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             user: props.user,
             register: props.register
         }
@@ -32,8 +32,8 @@ class Register extends Component {
             username: this.state.username,
             password: this.state.password,
             email: this.state.email,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName
+            first_name: this.state.firstName,
+            last_name: this.state.lastName
         };
 
         try{

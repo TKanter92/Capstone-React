@@ -1,25 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Router } from 'react-router';
 
-function NavBar() {
+function NavBar(props) {
 
     return(
-        <nav>
-            <ul>
-                <Link to='/'>
-                    <li>Home</li>
-                </Link>
-                <Link to='/about'>
-                    <li>About Us</li>
-                </Link>
-                <Link to='/stylequiz'>
-                    <li>Style Quiz</li>
-                </Link>
-                <Link to='/login'>
-                    <li>Log In</li>
-                </Link>
-            </ul>
-        </nav>
+        <React.Fragment>
+            <Router>
+                <Link to='/home'>Home</Link>
+                <Link to='/aboutus'>About Us</Link>
+                <Link to='/stylequiz'>Style Quiz</Link>
+                <Link to='/logout'>Log Out</Link>
+            </Router>
+        </React.Fragment>
     );
 }
 
