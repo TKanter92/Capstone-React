@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Router } from 'react-router';
+import { Router } from 'react-router-dom';
 
 function NavBar(props) {
 

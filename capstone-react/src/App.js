@@ -5,8 +5,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import { BrowserRouter } from 'react-router-dom';
-import { Route, Switch } from "react-router";
+import { Route, Switch } from "react-router-dom";
 import axios from 'axios';
 import HomePage from './components/HomePage/HomePage';
 import jwtDecode from "jwt-decode";
@@ -62,33 +61,31 @@ class App extends Component {
                 <Header />
                 <Navbar user={this.state.user} logoutUser={this.logoutUser} />
                 <div>
-                    <BrowserRouter>
-                        <Switch>
-                            <Route
-                            path="/"
-                            exact
-                            render={(props) => {
-                                if (!this.state.user) {
-                                    console.log("True: " + this.state.user);
-                                    return (
-                                        <Login {...props} getCredentials={this.getCredentials} />
-                                    );
-                                } else {
-                                    console.log("false: " + this.state.user);
-                                    return(
-                                        <HomePage />
-                                    );
-                                }
-                            }}
-                            />
-                            <Route path='/register' component={Register} />
-                            <Route path='/login' component={Login} />
-                            <Route path='/logout' component={Login} />
-                            <Route path='/aboutus' component={AboutUs} />
-                            {/* <Route path='/stylequiz' component={StyleQuiz} /> */}
-                            <Redirect to="/not-found" />
-                        </Switch>
-                    </BrowserRouter>
+                    <Switch>
+                        <Route
+                        path="/"
+                        exact
+                        render={(props) => {
+                            if (!this.state.user) {
+                                console.log("True: " + this.state.user);
+                                return (
+                                    <Login {...props} getCredentials={this.getCredentials} />
+                                );
+                            } else {
+                                console.log("false: " + this.state.user);
+                                return(
+                                    <HomePage />
+                                );
+                            }
+                        }}
+                        />
+                        <Route path='/register' component={Register} />
+                        <Route path='/login' component={Login} />
+                        <Route path='/logout' component={Login} />
+                        <Route path='/aboutus' component={AboutUs} />
+                        {/* <Route path='/stylequiz' component={StyleQuiz} /> */}
+                        <Redirect to="/not-found" />
+                    </Switch>
                 <Footer />
                 </div>
             </div>
