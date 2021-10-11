@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Router } from 'react-router-dom';
 
 function NavBar(props) {
 
     return(
         <React.Fragment>
-            <Router>
-                <Link to='/home'>Home</Link>
-                <Link to='/aboutus'>About Us</Link>
-                <Link to='/stylequiz'>Style Quiz</Link>
-                <Link to='/logout'>Log Out</Link>
-            </Router>
+            <Link to='/'>Home</Link>
+            <Link to='/aboutus'>About Us</Link>
+            <Link to='/stylequiz'>Style Quiz</Link>
+            <Link to='/logout'>Log Out</Link>
         </React.Fragment>
     );
 }
