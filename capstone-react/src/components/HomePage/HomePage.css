@@ -1,4 +1,26 @@
-h1.title{
-    text-align: left;
-    padding-left: 8%;
+h1{
+    text-align: center;
+    padding: 3%;
+    font-family: 'Questrial', sans-serif;
+    font-size: 3.0em;
+}
+
+
+figcaption {
+    position: absolute;
+    bottom: 35rem;
+    margin: 0 50rem;
+    color: black;
+    font-family: 'Questrial', sans-serif;
+    font-size: 4.0em;
+    text-align: center;
+}
+
+.hero {
+    opacity: 0.67;
+}
+
+
+.content {
+    padding-bottom: 8rem;
 }

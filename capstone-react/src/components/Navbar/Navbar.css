@@ -1,0 +1,40 @@
+.navbar {
+    background: #282828;
+    color: white;
+    display: flex;
+}
+
+.nav-items {
+    color: white;
+    margin-right: 8rem;
+    font-size: 1.2rem;
+    font-family: 'Questrial', sans-serif;
+    list-style: none;
+    display: flex;
+    text-align: center;
+    justify-content: flex-end;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.5rem;
+    margin-right: 2.5rem;
+}
+
+.nav-item a:hover {
+    background: rgb(179, 179, 179);
+}
+
+.navbar-brand {
+    color: #add8e6;
+    font-size: 3rem;
+    font-family: 'Questrial', sans-serif;
+    margin-left: 4rem;
+}

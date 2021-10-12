@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import AboutUs from './components/AboutUs/AboutUs';
 import Navbar from './components/Navbar/Navbar';
@@ -58,7 +57,6 @@ class App extends Component {
     render() {
         return(
             <div>
-                <Header />
                 <Navbar user={this.state.user} logoutUser={this.logoutUser} />
                 <div>
                     <Switch>
@@ -82,7 +80,7 @@ class App extends Component {
                         <Route path='/register' component={Register} />
                         <Route path='/login' component={Login} />
                         <Route path='/logout' component={Login} />
-                        <Route path='/aboutus' component={AboutUs} />
+                        <Route path='/designers' component={AboutUs} />
                         {/* <Route path='/stylequiz' component={StyleQuiz} /> */}
                         <Redirect to="/not-found" />
                     </Switch>
