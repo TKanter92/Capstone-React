@@ -1,15 +1,15 @@
 h1{
     text-align: center;
-    padding: 3%;
+    padding: 5%;
     font-family: 'Questrial', sans-serif;
     font-size: 3.0em;
 }
 
 
 figcaption {
-    position: absolute;
-    bottom: 35rem;
-    margin: 0 50rem;
+    position: relative;
+    bottom: 40rem;
+    margin-bottom: 10px;
     color: black;
     font-family: 'Questrial', sans-serif;
     font-size: 4.0em;

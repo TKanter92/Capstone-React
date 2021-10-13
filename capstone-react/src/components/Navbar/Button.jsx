@@ -40,7 +40,7 @@ class Button extends Component {
         } else {
             return(
                 <div className="logout-button">
-                    <Link to='/login'>
+                    <Link to='/'>
                         <button className="logout" onClick={this.logoutUser}>
                             Logout
                         </button>

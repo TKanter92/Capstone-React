@@ -22,4 +22,5 @@ button {
 
 input {
     align-content: flex-end;
+    margin-left: 10px;
 }

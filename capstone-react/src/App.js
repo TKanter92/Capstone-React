@@ -10,19 +10,23 @@ import HomePage from './components/HomePage/HomePage';
 import jwtDecode from "jwt-decode";
 import { Redirect } from 'react-router';
 import "bootstrap/dist/css/bootstrap.min.css";
-// import StyleQuiz from './components/StyleQuiz/StyleQuiz';
+import StyleQuiz from './components/StyleQuiz/StyleQuiz';
+// import Projects from './components/PastProjects/Projects';
 
 class App extends Component {
     state = {
-        user: undefined
+        user: undefined,
+        questionnaire: []
     };
 
     componentDidMount() {
         const jwt = localStorage.getItem("token");
+        this.getQuestionnaire();
         try {
             const user = jwtDecode(jwt);
             this.setState ({
-                user: user
+                user: user,
+                questionnaire: this.state.questionnaire
             });
         }
         catch (error) {
@@ -33,7 +37,6 @@ class App extends Component {
     getCredentials = async (credentials) => {
         try {
             let response = await axios.post("http://127.0.0.1:8000/api/auth/login/", credentials);
-            console.log(response);
             this.setState({
                 user: response.data.token
             });
@@ -44,6 +47,18 @@ class App extends Component {
             console.log("Unsuccessful Login");
         }
     };
+
+    submitQuestionnaire = async (questionnaire) => {
+        await axios.post('http://127.0.0.1:8000/api/questionnaire/', questionnaire)
+        this.getQuestionnaire();
+    }
+
+    getQuestionnaire = async () => {
+        let response = await axios.get('http://127.0.0.1:8000/api/questionnaire/');
+        this.setState({
+            questionnaire: response.data
+        });
+    }
 
     logoutUser = (event) => {
         localStorage.removeItem("token");
@@ -78,10 +93,11 @@ class App extends Component {
                         }}
                         />
                         <Route path='/register' component={Register} />
+                        {/* <Route path='/projects' component={Projects} /> */}
                         <Route path='/login' component={Login} />
                         <Route path='/logout' component={Login} />
                         <Route path='/designers' component={AboutUs} />
-                        {/* <Route path='/stylequiz' component={StyleQuiz} /> */}
+                        <Route path='/stylequiz' component={StyleQuiz} />
                         <Redirect to="/not-found" />
                     </Switch>
                 <Footer />
