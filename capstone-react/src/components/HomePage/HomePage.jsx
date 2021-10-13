@@ -9,9 +9,10 @@ class HomePage extends Component {
         return (
             <React.Fragment>
                 <figure className="position-relative">
-                    <img src={interior} alt="hero image" width="100%" className="hero" />
+                    <img src={interior} alt="hero" width="100%" className="hero" />
                     <figcaption className="hover-text">
-                        We Help Bring Visions To Reality
+                        We Turn Visions <br />
+                        Into Reality
                     </figcaption>
                 </figure>
                 <div className="mod-title">
