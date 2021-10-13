@@ -6,7 +6,8 @@ class StyleQuiz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            style: ""
+            style: "",
+            questionnaire: [],
         }
     }
 
@@ -19,8 +20,13 @@ class StyleQuiz extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.getStyleInfo();
+        this.setState({
+            style: ""
+        });
         
     }
+
+
 }
 
 export default StyleQuiz;

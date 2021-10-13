@@ -23,11 +23,5 @@ export const navItems = [
         path: '/projects',
         cName: "nav-item",
     },
-    {
-        id: 5,
-        title: "Login/Register",
-        path: '/login',
-        cName: "nav-item",
-    },
 
 ]

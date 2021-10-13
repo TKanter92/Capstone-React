@@ -59,8 +59,8 @@ class Login extends Component {
                     </div>
                     <div className="row">
                         <div className="col-sm-10 col-auto">
-                            <button type="submit" className="btn btn-primary">Login</button>
-                            <button className="btn btn-secondary" onClick={this.navToRegister}>Register</button>
+                            <button type="submit" className="btn">Login</button>
+                            <button className="btn" onClick={this.navToRegister}>Register</button>
                         </div>
                     </div>
                 </form>

@@ -1,0 +1,25 @@
+form {
+    margin: 18rem;
+    background: #add8e6;
+    font-family: 'Questrial', sans-serif;
+    font-size: large;
+    display: ruby;
+    justify-content: center;
+    border: 1px solid;
+}
+
+label {
+    color: #282828;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+}
+
+button {
+    color: #282828;
+    text-decoration: none;
+}
+
+input {
+    align-content: flex-end;
+}
