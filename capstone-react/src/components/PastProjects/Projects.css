@@ -1,0 +1,19 @@
+.gallery-container{
+    max-width: 1200px;
+    margin: auto;
+    background: #f2f2f2;
+    overflow: auto;
+}
+
+.projects-gallery{
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 390px;
+}
+
+.projects-gallery img{
+    width: 100%;
+    height: auto;
+}
+

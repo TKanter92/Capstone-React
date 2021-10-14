@@ -48,13 +48,13 @@ class Login extends Component {
                     <div className="row mb-3">
                         <label>Username:</label>
                         <div className="col-sm-10">
-                            <input type="text" name="username" placeholder="Username..." onChange={this.handleChange} value={this.state.username} /><br />
+                            <input type="text" name="username" placeholder="Username..." onChange={this.handleChange} value={this.state.username} required /><br />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <label>Password:</label>
                         <div className="col-sm-10">
-                            <input type="password" name="password" placeholder="Password..." onChange={this.handleChange} value={this.state.password} /><br />
+                            <input type="password" name="password" placeholder="Password..." onChange={this.handleChange} value={this.state.password} required /><br />
                         </div>
                     </div>
                     <div className="row">

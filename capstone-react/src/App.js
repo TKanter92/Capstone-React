@@ -14,10 +14,13 @@ import StyleQuiz from './components/StyleQuiz/StyleQuiz';
 import Projects from './components/PastProjects/Projects';
 
 class App extends Component {
-    state = {
-        user: undefined,
-        questionnaire: []
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            user: undefined,
+            questionnaire: []
+        };
+    }
 
     componentDidMount() {
         const jwt = localStorage.getItem("token");
@@ -41,7 +44,6 @@ class App extends Component {
                 user: response.data.token
             });
             localStorage.setItem("token", response.data.access);
-            console.log("Loginuser: " + this.state.user);
         }
         catch {
             console.log("Unsuccessful Login");
@@ -75,26 +77,10 @@ class App extends Component {
                 <Navbar user={this.state.user} logoutUser={this.logoutUser} />
                 <div>
                     <Switch>
-                        <Route
-                        path="/"
-                        exact
-                        render={(props) => {
-                            if (!this.state.user) {
-                                console.log("True: " + this.state.user);
-                                return (
-                                    <Login {...props} getCredentials={this.getCredentials} />
-                                );
-                            } else {
-                                console.log("false: " + this.state.user);
-                                return(
-                                    <HomePage />
-                                );
-                            }
-                        }}
-                        />
+                        <Route path="/" exact component={HomePage} />
                         <Route path='/register' component={Register} />
                         <Route path='/projects' component={Projects} />
-                        <Route path='/login' component={Login} />
+                        <Route path='/login' component={Login} getCredentials={this.getCredentials}/>
                         <Route path='/logout' component={Login} />
                         <Route path='/designers' component={AboutUs} />
                         <Route path='/stylequiz' component={StyleQuiz} />

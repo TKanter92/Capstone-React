@@ -17,40 +17,50 @@ import project14 from '../../photos/project14.jpg';
 
 function Projects() {
     return(
-        <React.Fragment>
-            <table className="projects-table">
-                <tbody>
-                    <tr>
-                        <td><img src={project1} alt="project" border='3' height='100' width='100'/></td>
-                        <td><img src={project2} alt="project" border='3' height='100' width='100'/></td>
-                    </tr>
-                    <tr>
-                        <td><img src={project3} alt="project" border='3' height='100' width='100'/></td>
-                        <td><img src={project4} alt="project" border='3' height='100' width='100'/></td>
-                    </tr>
-                    <tr>
-                        <td><img src={project5} alt="project" border='3' height='100' width='100'/></td>
-                        <td><img src={project6} alt="project" border='3' height='100' width='100'/></td>
-                    </tr>
-                    <tr>
-                        <td><img src={project7} alt="project" border='3' height='100' width='100'/></td>
-                        <td><img src={project8} alt="project" border='3' height='100' width='100'/></td>
-                    </tr>
-                    <tr>
-                        <td><img src={project9} alt="project" border='3' height='100' width='100'/></td>
-                        <td><img src={project10} alt="project" border='3' height='100' width='100'/></td>
-                    </tr>
-                    <tr>
-                        <td><img src={project11} alt="project" border='3' height='100' width='100'/></td>
-                        <td><img src={project12} alt="project" border='3' height='100' width='100'/></td>
-                    </tr>
-                    <tr>
-                        <td><img src={project13} alt="project" border='3' height='100' width='100'/></td>
-                        <td><img src={project14} alt="project" border='3' height='100' width='100'/></td>
-                    </tr>
-                </tbody>
-            </table>
-        </React.Fragment>
+        <div className="gallery-container">
+            <div className="projects-gallery">
+                <img src={project1} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project2} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project3} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project4} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project5} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project6} alt="project" />
+            </div>
+            <div className="projects-gallery">      
+                <img src={project7} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project8} alt="project" />
+            </div>
+            <div className="projects-gallery">  
+                <img src={project9} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project10} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project11} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project12} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project13} alt="project" />
+            </div>
+            <div className="projects-gallery">
+                <img src={project14} alt="project" />  
+            </div>
+        </div>
     )
 }
 
