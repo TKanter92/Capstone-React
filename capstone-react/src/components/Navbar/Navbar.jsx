@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 import './Navbar.css';
 import { navItems } from './NavItems';
-import './Button.css';
 
 
 function NavBar() {

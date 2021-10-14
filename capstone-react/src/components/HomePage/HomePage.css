@@ -1,6 +1,6 @@
 h1{
     text-align: center;
-    padding: 5%;
+    margin-bottom: 2rem;
     font-family: 'Questrial', sans-serif;
     font-size: 3.0em;
 }
@@ -20,7 +20,6 @@ figcaption {
     opacity: 0.67;
 }
 
-
 .content {
-    padding-bottom: 8rem;
+    padding-bottom: 6rem;
 }

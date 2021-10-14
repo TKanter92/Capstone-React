@@ -11,7 +11,7 @@ import jwtDecode from "jwt-decode";
 import { Redirect } from 'react-router';
 import "bootstrap/dist/css/bootstrap.min.css";
 import StyleQuiz from './components/StyleQuiz/StyleQuiz';
-// import Projects from './components/PastProjects/Projects';
+import Projects from './components/PastProjects/Projects';
 
 class App extends Component {
     state = {
@@ -93,7 +93,7 @@ class App extends Component {
                         }}
                         />
                         <Route path='/register' component={Register} />
-                        {/* <Route path='/projects' component={Projects} /> */}
+                        <Route path='/projects' component={Projects} />
                         <Route path='/login' component={Login} />
                         <Route path='/logout' component={Login} />
                         <Route path='/designers' component={AboutUs} />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './Button.css';
 
 class Button extends Component {
     constructor(props) {
@@ -11,9 +12,15 @@ class Button extends Component {
     }
 
     buttonClickLogin = (event) => {
-        this.setState({
-            isLoggedIn: true,
-        });
+        if (this.state.user != null) {
+            this.setState({
+                isLoggedIn: true,
+            });
+        } else {
+            this.setState({
+                isLoggedIn: false,
+            })
+        }
     }
 
     logoutUser = (event) => {

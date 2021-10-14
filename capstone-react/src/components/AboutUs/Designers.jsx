@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from './CardUI';
 import portrait1 from '../../photos/portrait1.jpeg';
 import portrait2 from '../../photos/portrait2.jpeg';
+import './AboutUs.css';
 
 class Designers extends Component {
     render() {

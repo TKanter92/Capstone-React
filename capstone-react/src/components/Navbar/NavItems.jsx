@@ -13,7 +13,7 @@ export const navItems = [
     },
     {
         id: 3,
-        title: "About Us",
+        title: "Meet The Designers",
         path: '/designers',
         cName: "nav-item",
     },

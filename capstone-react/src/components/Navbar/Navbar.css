@@ -24,12 +24,9 @@
     color: white;
     font-family: 'Questrial', sans-serif;
     font-size: 1.5rem;
-    margin-right: 3rem;
+    margin-right: 2.5rem;
 }
 
-.nav-item a:hover {
-    background: rgb(179, 179, 179);
-}
 
 .navbar-brand {
     color: #add8e6;
