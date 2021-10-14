@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Register from '../Register/Register';
 import './Login.css';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Login extends Component {
             username: "",
             password: "",
             jwt: null,
+            user: null,
             register: false
         }
     }
@@ -25,8 +27,23 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password,
         };
-        this.props.getCredentials(credentials);
+        this.getCredentials(credentials);
     }
+
+    getCredentials = async (credentials) => {
+        try {
+            let response = await axios.post("http://127.0.0.1:8000/api/auth/login/", credentials);
+            this.setState({
+                user: response.data.token
+            });
+            localStorage.setItem("token", response.data.access);
+            console.log("successful login");
+        }
+        
+        catch {
+            console.log("Unsuccessful Login");
+        }
+    };
 
     navToRegister = (event) => {
         if(this.state.register === false)
@@ -44,7 +61,7 @@ class Login extends Component {
             <Register register = {this.state.register} navToRegister={this.navToRegister} />
             :
             <div className="d-flex container justify-content-center align-items-center">
-                <form className="form-group" onSubmit={(event) => this.handleSubmit(event)}>
+                <form className="form-group" onSubmit={this.handleSubmit}>
                     <div className="row mb-3">
                         <label>Username:</label>
                         <div className="col-sm-10">
@@ -65,8 +82,7 @@ class Login extends Component {
                     </div>
                 </form>
             </div>
-    }   </div>
-        );
+                } </div>   );
     }
 }
 

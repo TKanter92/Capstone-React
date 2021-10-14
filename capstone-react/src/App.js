@@ -5,7 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import { Route, Switch } from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
 import HomePage from './components/HomePage/HomePage';
 import jwtDecode from "jwt-decode";
 import { Redirect } from 'react-router';
@@ -17,19 +17,15 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            user: undefined,
-            questionnaire: []
         };
     }
 
     componentDidMount() {
         const jwt = localStorage.getItem("token");
-        this.getQuestionnaire();
         try {
             const user = jwtDecode(jwt);
             this.setState ({
-                user: user,
-                questionnaire: this.state.questionnaire
+                user: user
             });
         }
         catch (error) {
@@ -37,53 +33,62 @@ class App extends Component {
         }
     };
 
-    getCredentials = async (credentials) => {
-        try {
-            let response = await axios.post("http://127.0.0.1:8000/api/auth/login/", credentials);
-            this.setState({
-                user: response.data.token
-            });
-            localStorage.setItem("token", response.data.access);
-        }
-        catch {
-            console.log("Unsuccessful Login");
-        }
-    };
+    // getCredentials = async (credentials) => {
+    //     try {
+    //         let response = await axios.post("http://127.0.0.1:8000/api/auth/login/", credentials);
+    //         this.setState({
+    //             user: response.data.token
+    //         });
+    //         localStorage.setItem("token", response.data.access);
+    //     }
+    //     catch {
+    //         console.log("Unsuccessful Login");
+    //     }
+    // };
 
-    submitQuestionnaire = async (questionnaire) => {
-        await axios.post('http://127.0.0.1:8000/api/questionnaire/', questionnaire)
-        this.getQuestionnaire();
-    }
+    // submitQuestionnaire = async (questionnaire) => {
+    //     await axios.post('http://127.0.0.1:8000/api/questionnaire/', questionnaire)
+    //     this.getQuestionnaire();
+    // }
 
-    getQuestionnaire = async () => {
-        let response = await axios.get('http://127.0.0.1:8000/api/questionnaire/');
-        this.setState({
-            questionnaire: response.data
-        });
-    }
+    // getQuestionnaire = async () => {
+    //     let response = await axios.get('http://127.0.0.1:8000/api/questionnaire/');
+    //     this.setState({
+    //         questionnaire: response.data
+    //     });
+    // }
 
     logoutUser = (event) => {
         localStorage.removeItem("token");
         console.log("logged out");
         console.log(localStorage);
         this.setState({
-            user: undefined
+            user: null
         });
     };
 
     render() {
+        const  user = this.state.user;
         return(
             <div>
-                <Navbar user={this.state.user} logoutUser={this.logoutUser} />
+                <Navbar user={user} logoutUser={this.logoutUser} />
                 <div>
                     <Switch>
                         <Route path="/" exact component={HomePage} />
                         <Route path='/register' component={Register} />
                         <Route path='/projects' component={Projects} />
                         <Route path='/login' component={Login} getCredentials={this.getCredentials}/>
-                        <Route path='/logout' component={Login} />
+                        <Route path='/logout' component={this.logoutUser} />
                         <Route path='/designers' component={AboutUs} />
-                        <Route path='/stylequiz' component={StyleQuiz} />
+                        <Route path='/stylequiz' exact
+                        render={props => {
+                            if (!this.props.user){
+                                return <Redirect to='/login' />;
+                            } else {
+                                return <StyleQuiz {...props} user={user} />
+                            }
+                        }}
+                        />
                         <Redirect to="/not-found" />
                     </Switch>
                 <Footer />

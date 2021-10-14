@@ -40,7 +40,7 @@ function Projects() {
                 <img src={project7} alt="project" />
             </div>
             <div className="projects-gallery">
-                <img src={project8} alt="project" />
+                <img src={project11} alt="project" />
             </div>
             <div className="projects-gallery">  
                 <img src={project9} alt="project" />
@@ -49,16 +49,16 @@ function Projects() {
                 <img src={project10} alt="project" />
             </div>
             <div className="projects-gallery">
-                <img src={project11} alt="project" />
+                <img src={project8} alt="project" />
             </div>
             <div className="projects-gallery">
                 <img src={project12} alt="project" />
             </div>
             <div className="projects-gallery">
-                <img src={project13} alt="project" />
+                <img src={project14} alt="project" />
             </div>
             <div className="projects-gallery">
-                <img src={project14} alt="project" />  
+                <img src={project13} alt="project" />  
             </div>
         </div>
     )
