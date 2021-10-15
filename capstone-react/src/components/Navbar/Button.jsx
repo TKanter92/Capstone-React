@@ -6,7 +6,7 @@ class Button extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: props.user,
+            user: this.props.user,
             isLoggedIn: false,
         };
     }
@@ -26,15 +26,14 @@ class Button extends Component {
     logoutUser = (event) => {
         localStorage.removeItem("token");
         console.log("logged out");
-        console.log(localStorage);
         this.setState({
-            user: undefined,
+            user: null,
             isLoggedIn: false
         });
     }
 
     render() {
-        if (this.state.isLoggedIn === false) {
+        if (this.state.user === null) {
             return(
                 <div className="login-button">
                     <Link to='/login'>

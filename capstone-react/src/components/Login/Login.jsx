@@ -11,7 +11,7 @@ class Login extends Component {
             password: "",
             jwt: null,
             user: null,
-            register: false
+            register: false,
         }
     }
 
@@ -28,6 +28,7 @@ class Login extends Component {
             password: this.state.password,
         };
         this.getCredentials(credentials);
+        
     }
 
     getCredentials = async (credentials) => {
@@ -36,7 +37,8 @@ class Login extends Component {
             this.setState({
                 user: response.data.token
             });
-            localStorage.setItem("token", response.data.access);
+            localStorage.setItem("token", response.data.refresh);
+            window.location='/';
             console.log("successful login");
         }
         

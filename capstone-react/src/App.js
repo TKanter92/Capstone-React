@@ -5,7 +5,6 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import { Route, Switch } from "react-router-dom";
-// import axios from 'axios';
 import HomePage from './components/HomePage/HomePage';
 import jwtDecode from "jwt-decode";
 import { Redirect } from 'react-router';
@@ -17,6 +16,8 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
+            user: null,
+            questionnaire: []
         };
     }
 
@@ -33,45 +34,19 @@ class App extends Component {
         }
     };
 
-    // getCredentials = async (credentials) => {
-    //     try {
-    //         let response = await axios.post("http://127.0.0.1:8000/api/auth/login/", credentials);
-    //         this.setState({
-    //             user: response.data.token
-    //         });
-    //         localStorage.setItem("token", response.data.access);
-    //     }
-    //     catch {
-    //         console.log("Unsuccessful Login");
-    //     }
-    // };
-
-    // submitQuestionnaire = async (questionnaire) => {
-    //     await axios.post('http://127.0.0.1:8000/api/questionnaire/', questionnaire)
-    //     this.getQuestionnaire();
-    // }
-
-    // getQuestionnaire = async () => {
-    //     let response = await axios.get('http://127.0.0.1:8000/api/questionnaire/');
-    //     this.setState({
-    //         questionnaire: response.data
-    //     });
-    // }
-
     logoutUser = (event) => {
         localStorage.removeItem("token");
         console.log("logged out");
-        console.log(localStorage);
         this.setState({
             user: null
         });
     };
 
     render() {
-        const  user = this.state.user;
+        const  {user} = this.props;
         return(
             <div>
-                <Navbar user={user} logoutUser={this.logoutUser} />
+                <Navbar user={this.props.user} logoutUser={this.logoutUser} />
                 <div>
                     <Switch>
                         <Route path="/" exact component={HomePage} />
@@ -82,10 +57,11 @@ class App extends Component {
                         <Route path='/designers' component={AboutUs} />
                         <Route path='/stylequiz' exact
                         render={props => {
-                            if (!this.props.user){
+                            if (this.props.user === null){
+                                alert("Please log in to complete the style quiz.");
                                 return <Redirect to='/login' />;
                             } else {
-                                return <StyleQuiz {...props} user={user} />
+                                return <StyleQuiz user={user} questionnaire={this.state.questionnaire}/>
                             }
                         }}
                         />
@@ -97,5 +73,5 @@ class App extends Component {
         );
     }
 }
-
+// {...props} user={user}
 export default App;

@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './StyleQuiz.css';
 
 
 class StyleQuiz extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            patterns: false,
-            textures: false,
+            patterns: '',
+            textures: '',
             colors: '', 
             molding: '',
-            wallpaper: false,
+            wallpaper: '',
             windowTreatments: '',
-            rugs: false,
-            carpeting: false,
-            budget: 0
+            rugs: '',
+            carpeting: '',
+            budget: '',
+            questionnaire: props.questionnaire,
+            user: props.user
         }
     }
 
@@ -26,60 +29,87 @@ class StyleQuiz extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
-        this.props.submitQuestionnaire(this.state)
+        const questionnaireInfo = {
+            patterns: this.state.patterns,
+            textures: this.state.textures,
+            colors: this.state.colors, 
+            molding: this.state.molding,
+            wallpaper: this.state.wallpaper,
+            windowTreatments: this.state.windowTreatments,
+            rugs: this.state.rugs,
+            carpeting: this.state.carpeting,
+            budget: this.state.budget
+        };
+        this.getQuestionnaireInfo(questionnaireInfo);
     }
+
+    getQuestionnaireInfo = async (questionnaireInfo) => {
+        try{
+            let response = await axios.post('http://127.0.0.1:8000/api/questionnaire/', questionnaireInfo);
+            this.setState({
+                questionnaire: response.data
+            });
+            window.location='/';
+            console.log("Questionnaire submitted successfully");
+        }
+        catch{
+            console.log("Questionnaire could not be submit");
+        }
+    };
 
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="stylequiz-form">
                 <div className="md-3">
                     <p>Pattern or no pattern? Type "True" for pattern, "False" for no pattern.</p>
-                    <label for="patterns" className="form-label">Patterns</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="patterns" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="patterns" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>Texture or no texture? Type "True" for pattern, "False" for no texture.</p>
-                    <label for="textures" className="form-label">Textures</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="textures" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="textures" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>Do you prefer neutral colors, or bright, vibrant colors?</p>
-                    <label for="colors" className="form-label">Colors</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="colors" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="colors" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>What color molding do you prefer? (e.g. White, Natural, Stained)</p>
-                    <label for="molding" className="form-label">Molding</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="molding" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="molding" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>Do you like wallpaper? Type "True" for yes, "False" for no.</p>
-                    <label for="wallpaper" className="form-label">Wallpaper</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="wallpaper" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="wallpaper" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>What type of window treatment do you prefer? (e.g. Curtains, Open, Blinds)</p>
-                    <label for="window_treatments" className="form-label">Window Treatments</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="windowTreatments" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="windowTreatments" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>Do you like having rugs in your space? Type "True" for yes, "False" for no.</p>
-                    <label for="rugs" className="form-label">Rugs</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="rugs" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="rugs" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>Do you prefer carpeting over other material? Type "True" for yes, "False" for no.</p>
-                    <label for="carpeting" className="form-label">Carpeting</label>
-                    <input onChange={this.handleChange} type="text" className="form-control" name="carpeting" />
+                    <input onChange={this.handleChange} type="text" className="form-control" name="carpeting" required />
                 </div>
+                <br />
                 <div className="md-3">
                     <p>Please enter your budget.</p>
-                    <label for="budget" className="form-label">Budget</label>
-                    <input onChange={this.handleChange} type="number" className="form-control" name="budget" />
+                    <input onChange={this.handleChange} type="number" className="form-control" name="budget" required />
                 </div>
-                <button type="submit">
-                    Submit
-                </button>
+                <br />
+                <div className="submit-btn">
+                    <button type="submit" className="btn btn-light">
+                        Submit
+                    </button>
+                </div>
             </form>
         );
     }

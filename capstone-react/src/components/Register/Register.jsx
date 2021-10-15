@@ -11,7 +11,7 @@ class Register extends Component {
             email: "",
             first_name: "",
             last_name: "",
-            user: props.user,
+            user: null,
             register: props.register
         }
     }
@@ -24,11 +24,6 @@ class Register extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.getRegistrationInfo();
-        this.props.navToRegister();
-    }
-
-    getRegistrationInfo = async () => {
         const registrationInfo = {
             username: this.state.username,
             password: this.state.password,
@@ -36,20 +31,28 @@ class Register extends Component {
             first_name: this.state.firstName,
             last_name: this.state.lastName
         };
+        this.getRegistrationInfo(registrationInfo);
+        // this.props.navToRegister();
+    }
 
+    getRegistrationInfo = async (registrationInfo) => {
         try{
             let response = await axios.post("http://127.0.0.1:8000/api/auth/register/", registrationInfo);
-            console.log(response);
+            this.setState({
+                user: response.data
+            });
+            window.location='/login';
+            console.log("Successful Registration");
         }
         catch{
             console.log("Unsuccessful Registration");
         }
-    }
+    };
 
     render() {
         return(
             <div className="d-flex container justify-content-center align-items-center">
-                <form className="form-group" onSubmit={(event) => this.handleSubmit(event)}>
+                <form className="form-group" onSubmit={this.handleSubmit}>
                     <div className = "row mb-3">
                     <label>First Name:</label>
                         <div className="col-sm-10">
